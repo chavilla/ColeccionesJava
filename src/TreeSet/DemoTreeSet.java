@@ -23,7 +23,7 @@ public class DemoTreeSet {
 			System.out.println(p.getDescription());
 		}
 		
-		Product productComparator=new Product();
+		ProductComparator productComparator=new ProductComparator();
 		TreeSet<Product> productOrder2= new TreeSet<Product>(productComparator);
 	
 		productOrder2.add(p1);
@@ -38,7 +38,7 @@ public class DemoTreeSet {
 }
 
 
-class Product implements Comparable<Product>, Comparator<Product> {
+class Product implements Comparable<Product>{
 	
 	private int id;
 	private String description;
@@ -48,10 +48,6 @@ class Product implements Comparable<Product>, Comparator<Product> {
 		this.description=description;
 	}
 	
-	public Product() {
-		// TODO Auto-generated constructor stub
-	}
-
 	//Devuelve la descripcion
 	public String getDescription() {
 		return description;
@@ -63,13 +59,30 @@ class Product implements Comparable<Product>, Comparator<Product> {
 		return id-p.id;
 	}
 
-	@Override
-	public int compare(Product p1, Product p2) {
+	/*public int compare(Product p1, Product p2) {
 		// TODO Auto-generated method stub
 		String description1=p1.getDescription();
 		String description2=p2.getDescription();
 		
 		return description1.compareTo(description2);
-	}
+	}*/
 	
 }
+
+
+class ProductComparator implements Comparator<Product>{
+
+	@Override
+	public int compare(Product arg0, Product arg1) {
+		// TODO Auto-generated method stub
+		String desc1=arg0.getDescription();
+		String desc2=arg1.getDescription();
+		
+		return desc1.compareTo(desc2);
+	}
+	
+	
+}
+
+
+
